@@ -11,6 +11,7 @@ import com.market.marketplace.models.UsuariosModel;
 @Repository
 public interface LanchesRepository extends JpaRepository<LanchesModel, Long> {
 
+  /* Mantive pois como ele está relacionado pelo id n afeta diretamente, então n tem problema */
   List<LanchesModel> findByUsuario(UsuariosModel usuario);
 
   List<LanchesModel> findByUsuarioId(Long usuarioId);

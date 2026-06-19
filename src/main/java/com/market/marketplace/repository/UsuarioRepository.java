@@ -10,7 +10,8 @@ import com.market.marketplace.models.UsuariosModel;
 @Repository
 public interface UsuarioRepository extends JpaRepository<UsuariosModel, Long> {
 
-  Optional<UsuariosModel> findByUsuario(String usuario);
+  /* As alterações feitas aqui no repository é pra deixar compativel com a mudança dos models */
+  Optional<UsuariosModel> findByNomeUsuario(String nomeUsuario);
   
-  boolean existsByUsuario(String usuario);
+  boolean existsByNomeUsuario(String nomeUsuario);
 }

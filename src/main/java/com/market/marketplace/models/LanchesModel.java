@@ -9,25 +9,32 @@ import jakarta.persistence.JoinTable;
 import jakarta.persistence.ManyToMany;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
+
+/* O JPA exije construtores sem argumento para os proxies, então é uma boa pratica ter as 2 importações ao utilizar o JPA */
 import lombok.AllArgsConstructor;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 import java.util.List;
 
 @Entity
 @Table(name = "Lanches")
 @Data
+
+
 @AllArgsConstructor
+@NoArgsConstructor
 public class LanchesModel {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
 
-  private String nome;
+  /* Nomes alterados para garantir consistencia com o objeto json e manter a consistencia com a api antiga */
+  private String nomeLanche;
 
-  private String foto; 
+  private String fotoLanche; 
 
-  private Double preco;
+  private Double precoLanche;
 
   @ManyToOne
   @JoinColumn(name = "usuario_id", nullable = false)
@@ -39,5 +46,5 @@ public class LanchesModel {
     joinColumns = @JoinColumn(name = "lanche_id"),
     inverseJoinColumns = @JoinColumn(name = "ingrediente_id")
   )
-  private List<IngredientesModel> ingredientes; 
+  private List<IngredientesModel> ingredientes;
 }

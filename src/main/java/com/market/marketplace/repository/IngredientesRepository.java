@@ -10,7 +10,8 @@ import com.market.marketplace.models.IngredientesModel;
 @Repository
 public interface IngredientesRepository extends JpaRepository<IngredientesModel, Long> {
 
-  Optional<IngredientesModel> findByNomeIgnoreCase(String nome);
+  /* As alterações feitas aqui no repository é pra deixar compativel com a mudança dos models */
+  Optional<IngredientesModel> findByIngredientesLancheIgnoreCase(String ingredientesLanche);
   
-  boolean existsByNomeIgnoreCase(String nome);
+  boolean existsByIngredientesLancheIgnoreCase(String ingredientesLanche);
 }

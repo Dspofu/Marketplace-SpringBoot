@@ -1,0 +1,99 @@
+<Cabeçalho>
+Toda a parte de authenticação está testada e aprovada, funcinou conforme o esperado.
+A parte dos ingredientes também está funcionando tudo certinho, todas as operações foram testadas e validadas.
+Cadastro de lanche deu igredientes nulo no json mais na listagem funcionou.
+Realização geral de testes: OK - Aprovado.
+Api disponibilizada no render com o endereço https://lanchonete-api-3kh9.onrender.com
+</Cabeçalho>
+
+<Rotas>
+
+@Post
+Cadastro de usuários ~> https://lanchonete-api-3kh9.onrender.com/api/usuarios
+
+{
+    "nomeUsuario": "",
+    "senhaUsuario": ""
+}
+
+@Put
+Redefinir senha de usuário ~> https://lanchonete-api-3kh9.onrender.com/api/usuarios/redefinir/id
+
+{
+    "nomeUsuario": "", //Nome de usuário deve permanecer o mesmo, aqui é somente para redefinir senha de usuário!
+    "senhaUsuario": ""
+}
+
+@Post
+Authenticação de usuário ~> https://lanchonete-api-3kh9.onrender.com/api/usuarios/login
+
+{
+    "nomeUsuario": "",
+    "senhaUsuario": ""
+}
+
+=========================================================================
+
+@Post
+Cadastro de lanches ~> https://lanchonete-api-3kh9.onrender.com/api/usuarios/lanches
+
+{
+    "fotoLanche": "",
+    "nomeLanche": "",
+    "precoLanche": 0.0,
+    "idUsuario": 0,
+    "idIngrediente": 0
+}
+
+@Delete
+Remover lanche ~> https://lanchonete-api-3kh9.onrender.com/api/usuarios/lanches/id
+
+@Put
+Editar lanche ~> https://lanchonete-api-3kh9.onrender.com/api/usuarios/lanches/id
+
+{
+    "fotoLanche": "",
+    "nomeLanche": "",
+    "precoLanche": 0.0,
+    "idUsuario": 0,
+    "idIngrediente": 0
+}
+
+@Get
+Filtrar lista de lanche ~> https://lanchonete-api-3kh9.onrender.com/api/usuarios/lanches/id
+
+@Get
+Listar todos os lanches ~> https://lanchonete-api-3kh9.onrender.com/api/usuarios/lanches
+
+========================================================================
+
+@Post
+Cadastrar ingredientes ~> https://lanchonete-api-3kh9.onrender.com/api/usuarios/ingredientes
+
+{
+    "ingredientesLanche": ""
+}
+
+@Delete
+Remover ingrediente ~> https://lanchonete-api-3kh9.onrender.com/api/usuarios/ingredientes/id
+
+@Put
+Editar ingrediente ~> https://lanchonete-api-3kh9.onrender.com/api/usuarios/ingredientes/id
+
+{
+    "ingredientesLanche": ""
+}
+
+@Get
+Filtrar ingrediente ~> https://lanchonete-api-3kh9.onrender.com/api/usuarios/ingredientes/id
+
+@Get
+Listar todos os ingredientes ~> https://lanchonete-api-3kh9.onrender.com/api/usuarios/ingredientes
+
+</Rotas>
+
+<Observação>
+Nas rotas no lugar do /id deve ser passado o id real, ex: um lanche possui um id 4, na hora de fazer alguma requisição o id deve ficar /4. 
+A mesma lógica se aplica q todas as outras rotas que envolvem o id.
+</Observação>
+
