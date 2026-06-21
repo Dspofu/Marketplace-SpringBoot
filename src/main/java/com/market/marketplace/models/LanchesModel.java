@@ -48,7 +48,7 @@ public class LanchesModel {
   )
   private List<IngredientesModel> ingredientes;
 }
-*/
+
 package com.market.marketplace.models;
 
 import jakarta.persistence.Entity;
@@ -85,4 +85,59 @@ public class LanchesModel {
     @ManyToOne
     @JoinColumn(name = "ingrediente_id", nullable = false)
     private IngredientesModel ingrediente;
+}
+    */
+
+package com.market.marketplace.models;
+
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import java.util.Objects;
+
+@Entity
+@Table(name = "Lanches")
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+public class LanchesModel {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    private String nomeLanche;
+    private String fotoLanche;
+    private Double precoLanche;
+
+    @ManyToOne
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private UsuariosModel usuario;
+
+    @ManyToOne
+    @JoinColumn(name = "ingrediente_id", nullable = false)
+    private IngredientesModel ingrediente;
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        LanchesModel that = (LanchesModel) o;
+        return Objects.equals(id, that.id);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id);
+    }
 }
