@@ -1,0 +1,12 @@
+[
+  {
+    "name": "org.hibernate.community.dialect.SQLiteDialect",
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  },
+  {
+    "name": "org.sqlite.JDBC",
+    "allDeclaredConstructors": true,
+    "allDeclaredMethods": true
+  }
+]
