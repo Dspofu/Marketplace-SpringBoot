@@ -24,14 +24,15 @@ public class LanchesService {
     @Autowired
     private IngredientesRepository ingredientesRepository;
 
-    public LanchesModel cadastrar(LanchesModel lanche, Long idUsuario, List<Long> idIngredientes) {
+    public LanchesModel cadastrar(LanchesModel lanche, Long idUsuario, Long idIngrediente) {
         UsuariosModel usuario = usuarioRepository.findById(idUsuario)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
-        List<IngredientesModel> ingredientes = ingredientesRepository.findAllById(idIngredientes);
+        IngredientesModel ingrediente = ingredientesRepository.findById(idIngrediente)
+                .orElseThrow(() -> new RuntimeException("Ingrediente não encontrado"));
 
         lanche.setUsuario(usuario);
-        lanche.setIngredientes(ingredientes);
+        lanche.setIngrediente(ingrediente);
 
         return lanchesRepository.save(lanche);
     }
@@ -45,19 +46,20 @@ public class LanchesService {
                 .orElseThrow(() -> new RuntimeException("Lanche não encontrado"));
     }
 
-    public LanchesModel editar(Long id, LanchesModel lancheAtualizado, Long idUsuario, List<Long> idIngredientes) {
+    public LanchesModel editar(Long id, LanchesModel lancheAtualizado, Long idUsuario, Long idIngrediente) {
         LanchesModel lanche = buscarPorId(id);
 
         UsuariosModel usuario = usuarioRepository.findById(idUsuario)
                 .orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
 
-        List<IngredientesModel> ingredientes = ingredientesRepository.findAllById(idIngredientes);
+        IngredientesModel ingrediente = ingredientesRepository.findById(idIngrediente)
+                .orElseThrow(() -> new RuntimeException("Ingrediente não encontrado"));
 
         lanche.setNomeLanche(lancheAtualizado.getNomeLanche());
         lanche.setFotoLanche(lancheAtualizado.getFotoLanche());
         lanche.setPrecoLanche(lancheAtualizado.getPrecoLanche());
         lanche.setUsuario(usuario);
-        lanche.setIngredientes(ingredientes);
+        lanche.setIngrediente(ingrediente);
 
         return lanchesRepository.save(lanche);
     }
